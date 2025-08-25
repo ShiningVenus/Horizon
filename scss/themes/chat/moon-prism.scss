@@ -13,7 +13,7 @@ $yellow-color: $moon-prism-gold;
 $purple-color: $moon-prism-purple;
 $cyan-color: $moon-prism-cyan;
 $white-color: $black;
-$black-color: #2a2d47;
+$black-color: #b8c2e0;
 $brown-color: $moon-prism-orange;
 $pink-color: $moon-prism-pink;
 $gray-color: $moon-prism-silver;
@@ -28,8 +28,8 @@ body,
   background: linear-gradient(
     135deg,
     rgba(26, 27, 46, 1) 0%,
-    rgba(13, 14, 26, 1) 40%,
-    rgba(22, 25, 44, 1) 100%
+    rgba(10, 11, 20, 1) 40%,
+    rgba(18, 22, 42, 1) 100%
   );
 }
 
@@ -75,6 +75,12 @@ $genders: (
   'transgender': $moon-prism-orange,
   'cunt-boy': $moon-prism-green
 );
+
+.list-group.conversation-nav
+  .list-group-item-action.item-private.active
+  .online-status {
+  color: color-contrast($primary);
+}
 
 @each $gender, $color in $genders {
   .gender-#{$gender} {
