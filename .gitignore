@@ -7,6 +7,9 @@ node_modules/
 
 /electron/adblocker.bin
 
+# Theme screenshots and lock files
+*-theme-screenshot.png
+pnpm-lock.yaml
 .idea/
 
 .DS_Store
