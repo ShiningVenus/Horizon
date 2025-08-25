@@ -18,7 +18,7 @@ $black: #f8f9ff;
 // Bootstrap 5 contrast colors
 $light-color: $black;
 $dark-color: $gray-base;
-$component-active-color: $dark-color;  // Use dark color for light primary
+$component-active-color: $dark-color; // Use dark color for light primary
 
 // Moon Prism celestial color palette
 $moon-prism-silver: #c8d5e8;
@@ -55,7 +55,7 @@ $modal-backdrop-bg: $white;
 $modal-content-bg: $gray-200;
 $modal-header-border-color: $gray-300;
 
-$component-active-color: $dark-color;  // Ensure dark text on light primary elements
+$component-active-color: $dark-color; // Ensure dark text on light primary elements
 // Reduce default padding slightly between columns in grids.
 $grid-gutter-width: 20px;
 
