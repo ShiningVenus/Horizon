@@ -1,0 +1,251 @@
+@use 'sass:color';
+@import '~bootstrap/scss/functions';
+@import '../../functions';
+@import '../variables/pink_sugar_variables';
+@import '~bootstrap/scss/variables';
+@import '../../flist_derived';
+@import '../variables/light_derived';
+
+// Apply variables to theme.
+@import '../chat';
+
+body,
+.modal-body {
+  background: #fef7f7;
+  background: linear-gradient(
+    135deg,
+    rgba(254, 247, 247, 1) 0%,
+    rgba(252, 232, 232, 1) 35%,
+    rgba(255, 240, 245, 1) 70%,
+    rgba(255, 228, 235, 1) 100%
+  );
+}
+
+.list-group.conversation-nav
+  .list-group-item-action.item-private.active
+  .online-status {
+  color: color-contrast($primary);
+}
+
+.sidebar {
+  background-color: rgba($body-bg, 0.6);
+}
+
+.message-own:not(.message-warn) {
+  background-color: rgba($pink-sugar-rose-gold, 0.4);
+}
+
+#window-tabs .nav-tabs .nav-link.active {
+  background-color: $pink-sugar-vanilla;
+  border-bottom-color: $pink-sugar-vanilla;
+}
+
+* {
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px rgba($pink-sugar-cherry, 0.3);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2);
+    background-color: $pink-sugar-rose-gold;
+    &:hover {
+      background-color: $pink-sugar-cherry;
+    }
+
+    &:active {
+      background-color: $pink-sugar-bubblegum;
+    }
+  }
+}
+
+.character-card-header {
+  background: $body-bg !important;
+}
+
+// Custom muted warning/danger colors for sugar theme
+$warning-bg-subtle-custom: mix($warning, $white, 45%);
+$danger-bg-subtle-custom: mix($danger, $white, 35%);
+
+:root {
+  --bs-warning-bg-subtle: #{$warning-bg-subtle-custom};
+  --bs-danger-bg-subtle: #{$danger-bg-subtle-custom};
+}
+
+@each $color, $value in $theme-colors {
+  .list-group-item-action.list-group-item-#{$color} {
+    color: var(--bs-#{$color}-text-emphasis);
+    background-color: var(--bs-#{$color}-bg-subtle);
+
+    &:hover,
+    &:focus {
+      color: var(--bs-#{$color}-text-emphasis);
+      background-color: color-mix(
+        in srgb,
+        var(--bs-#{$color}-bg-subtle) 95%,
+        $black
+      );
+    }
+  }
+}
+
+.quick-jump-result.selected {
+  color: #fff;
+}
+
+// Gender colors - sweet candy inspired
+$genders: (
+  'shemale': $pink-sugar-lavender,
+  'herm': $pink-sugar-cherry,
+  'none': $gray-600,
+  'female': $pink-sugar-bubblegum,
+  'male': color.scale($pink-sugar-lavender, $lightness: -20%),
+  'male-herm': $pink-sugar-mint,
+  'transgender': $pink-sugar-peach,
+  'cunt-boy': color.scale($pink-sugar-mint, $lightness: -15%)
+);
+
+@each $gender, $color in $genders {
+  .gender-#{$gender} {
+    color: $color;
+  }
+
+  .message-event .gender-#{$gender} {
+    color: color.scale($color, $lightness: -10%);
+  }
+
+  .gender-#{$gender}.user-bookmark,
+  .message-event .gender-#{$gender}.user-bookmark {
+    color: color.scale($pink-sugar-mint, $lightness: -20%);
+  }
+}
+
+// Message highlight colors for better contrast
+.message-highlight {
+  .blueText,
+  .blueNameText,
+  .gender-male {
+    color: color.scale($pink-sugar-lavender, $lightness: -40%);
+  }
+  .grayText,
+  .grayNameText,
+  .whiteText,
+  .whiteNameText {
+    color: $gray-700;
+  }
+
+  .yellowText,
+  .yellowNameText {
+    color: color.scale($warning, $lightness: -40%);
+  }
+
+  .orangeText,
+  .orangeNameText,
+  .gender-transgender {
+    color: color.scale($pink-sugar-peach, $lightness: -30%);
+  }
+
+  .brownText,
+  .brownNameText {
+    color: color.scale($pink-sugar-cherry, $lightness: -30%);
+  }
+
+  .cyanText,
+  .cyanNameText,
+  .gender-male-herm {
+    color: color.scale($pink-sugar-mint, $lightness: -30%);
+  }
+
+  .pinkText,
+  .pinkNameText,
+  .gender-female {
+    color: color.scale($pink-sugar-bubblegum, $lightness: -20%);
+  }
+}
+
+// Warning message colors - maintain readability on light backgrounds
+.message-warn {
+  .pinkText,
+  .pinkNameText,
+  .gender-female {
+    color: $pink-sugar-magenta;
+  }
+
+  .whiteText,
+  .whiteNameText {
+    color: $white;
+  }
+
+  .brownText,
+  .brownNameText {
+    color: color.scale($pink-sugar-cherry, $lightness: -40%);
+  }
+
+  .blueText,
+  .blueNameText,
+  .gender-male {
+    color: color.scale($pink-sugar-lavender, $lightness: -30%);
+  }
+
+  .yellowText,
+  .yellowNameText {
+    color: color.scale($warning, $lightness: -30%);
+  }
+
+  .greenText,
+  .greenNameText,
+  .gender-cunt-boy {
+    color: color.scale($success, $lightness: -20%);
+  }
+
+  .redText,
+  .redNameText,
+  .gender-herm {
+    color: $danger;
+  }
+
+  .orangeText,
+  .orangeNameText,
+  .brownNameText,
+  .brownText,
+  .gender-transgender {
+    color: color.scale($pink-sugar-peach, $lightness: -25%);
+  }
+
+  .purpleText,
+  .purpleNameText,
+  .gender-shemale {
+    color: color.scale($pink-sugar-lavender, $lightness: -25%);
+  }
+  .blackText,
+  .blackNameText,
+  .grayText,
+  .grayNameText,
+  .gender-none {
+    color: $black;
+  }
+
+  .cyanText,
+  .cyanNameText,
+  .gender-male-herm {
+    color: color.scale($pink-sugar-mint, $lightness: -25%);
+  }
+}
+
+.colorblindMode {
+  @import '../colorblind';
+  @import '../../rising';
+
+  @each $varName, $value in $risingVariables {
+    --#{$varName}: #{$value};
+  }
+}
+
+:root {
+  color-scheme: light;
+}
