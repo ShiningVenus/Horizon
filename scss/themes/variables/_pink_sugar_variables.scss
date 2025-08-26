@@ -1,0 +1,143 @@
+@use 'sass:color';
+
+// Base colors - Pink Sugar Heart Attack theme
+// Light theme with sweet candy and sugar-inspired pastels
+$gray-base: #fef7f7; // Very light warm pink base
+$white: #ffffff;
+$gray-100: #fef7f7; // Lightest pink-white
+$gray-200: #fce8e8; // Light blush
+$gray-300: #f7d4d4; // Soft pink
+$gray-400: #edb4b4; // Medium pink
+$gray-500: #e394a7; // Rose pink
+$gray-600: #d6748a; // Darker rose
+$gray-700: #c8546d; // Deep rose
+$gray-800: #a83050; // Dark pink
+$gray-900: #881c3d; // Very dark pink
+$black: #2d0a14; // Very dark burgundy
+
+// Bootstrap 5 contrast colors
+$light-color: $black;
+$dark-color: $gray-base;
+$component-active-color: $dark-color;
+
+// Pink Sugar Heart Attack color palette - sweet and dreamy
+$pink-sugar-cotton-candy: #ffb3e6; // Cotton candy pink
+$pink-sugar-bubblegum: #ff6bb3; // Bubblegum pink
+$pink-sugar-strawberry: #ff8fa3; // Strawberry pink
+$pink-sugar-vanilla: #fff8dc; // Vanilla cream
+$pink-sugar-cherry: #ff69b4; // Cherry pink
+$pink-sugar-rose-gold: #f7cac9; // Rose gold
+$pink-sugar-lavender: #e6e6fa; // Soft lavender
+$pink-sugar-mint: #f0fff0; // Mint cream
+$pink-sugar-peach: #ffcccb; // Light peach
+$pink-sugar-magenta: #ff1493; // Deep pink/magenta
+
+// Theme and brand colors
+$primary: #ff69b4; // Hot pink primary
+$secondary: $gray-400;
+$success: #98fb98; // Light green (mint)
+$info: color.scale($pink-sugar-lavender, $lightness: -20%);
+$warning: #ffd700; // Gold warning
+$danger: #ff6b6b; // Soft red
+$light: $gray-200;
+$text-muted: $gray-500;
+$text-dark: $gray-700;
+
+// Core page element colors
+$body-bg: $gray-100;
+$link-color: $pink-sugar-magenta;
+$link-hover-color: color.scale($link-color, $lightness: -15%);
+$dropdown-bg: $gray-200;
+$dropdown-divider-bg: $gray-300;
+
+// Modal Dialogs
+$modal-backdrop-bg: $white;
+$modal-content-bg: $gray-200;
+$modal-header-border-color: $gray-300;
+
+$component-active-color: $dark-color; // Ensure dark text on light primary elements
+// Reduce default padding slightly between columns in grids.
+$grid-gutter-width: 20px;
+
+// Form Elements
+$input-bg: $gray-200;
+$input-color: $black;
+$custom-select-bg: $gray-200;
+$form-check-input-checked-bg-color: $primary;
+
+// List groups
+$list-group-bg: $gray-200;
+
+// Pagination
+$pagination-active-color: $link-color;
+
+// F-List specific color helpers to help make monochromatic themes easier to deal with.
+$text-background-color: $gray-200;
+$text-background-color-disabled: $gray-100;
+
+// F-List Rising - Score colors with sugar theme
+$scorePerfectMatchBg: color.scale($pink-sugar-mint, $lightness: -20%);
+$scorePerfectMatchFg: color.scale($pink-sugar-mint, $lightness: -40%);
+$scoreMatchBg: color.scale($success, $lightness: -10%);
+$scoreMatchFg: color.scale($success, $lightness: -30%);
+$scoreWeakMatchBg: rgba($success, 0.3);
+$scoreWeakMatchFg: color.scale($success, $lightness: -20%);
+$scoreWeakMismatchBg: rgba($warning, 0.3);
+$scoreWeakMismatchFg: color.scale($warning, $lightness: -30%);
+$scoreMismatchBg: rgba($danger, 0.3);
+$scoreMismatchFg: color.scale($danger, $lightness: -20%);
+
+// Score standouts
+$scoreStandoutPerfectMatchBorderColor: color.scale(
+  $pink-sugar-mint,
+  $lightness: -30%
+);
+$scoreStandoutPerfectMatchBgColor: rgba($pink-sugar-mint, 0.3);
+$scoreStandoutMatchBorderColor: color.scale($success, $lightness: -30%);
+$scoreStandoutMatchBgColor: rgba($success, 0.3);
+$scoreStandoutWeakMatchBorderColor: color.scale($success, $lightness: -20%);
+$scoreStandoutWeakMatchBgColor: rgba($success, 0.2);
+$scoreStandoutNeutralBorderColor: $gray-300;
+$scoreStandoutWeakMismatchBorderColor: color.scale($warning, $lightness: -30%);
+$scoreStandoutWeakMismatchBgColor: rgba($warning, 0.2);
+$scoreStandoutMismatchBorderColor: color.scale($danger, $lightness: -30%);
+
+// Character profile elements
+$characterImageWrapperBg: rgba(0, 0, 0, 0.1);
+$characterGuestbookPostBg: rgba(255, 255, 255, 0.6);
+$characterGuestbookPostBorderColor: rgba($pink-sugar-rose-gold, 0.3);
+$characterGuestbookReplyBg: rgba(255, 255, 255, 0.4);
+$characterGuestbookTimestampFg: rgba(0, 0, 0, 0.5);
+$characterKinkCustomColor: $pink-sugar-rose-gold;
+$characterKinkCustomBorderColor: rgba($pink-sugar-rose-gold, 0.3);
+$characterKinkStockColor: $gray-600;
+$characterKinkStockHighlightedColor: $gray-800;
+$characterInfotagColor: rgba(0, 0, 0, 0.7);
+
+$messageTimeBgColor: $gray-300;
+$messageTimeFgColor: $gray-800;
+
+$headerBackgroundMaskColor: $gray-200;
+
+$linkForcedColor: $pink-sugar-magenta;
+$tabSecondaryFgColor: rgba(0, 0, 0, 0.4);
+
+// Score report background for light theme
+$scoreReportBg: rgba(0, 0, 0, 0.08);
+$scoreTitleColor: $black;
+$scoreMinimizeButtonFg: rgba(255, 255, 255, 0.6);
+$scoreMinimizeButtonBg: rgba(0, 0, 0, 0.1);
+
+// Score faded variants
+$scoreFadedPerfectMatchBg: color.adjust($scorePerfectMatchBg, $alpha: -0.6);
+$scoreFadedPerfectMatchFg: color.adjust($scorePerfectMatchFg, $alpha: -0.6);
+$scoreFadedMatchBg: color.adjust($scoreMatchBg, $alpha: -0.6);
+$scoreFadedMatchFg: color.adjust($scoreMatchFg, $alpha: -0.6);
+$scoreFadedWeakMatchBg: color.adjust($scoreWeakMatchBg, $alpha: -0.6);
+$scoreFadedWeakMatchFg: color.adjust($scoreWeakMatchFg, $alpha: -0.6);
+$scoreFadedWeakMismatchBg: color.adjust($scoreWeakMismatchBg, $alpha: -0.6);
+$scoreFadedWeakMismatchFg: color.adjust($scoreWeakMismatchFg, $alpha: -0.6);
+$scoreFadedMismatchBg: color.adjust($scoreMismatchBg, $alpha: -0.6);
+$scoreFadedMismatchFg: color.adjust($scoreMismatchFg, $alpha: -0.6);
+
+@import 'theme_level';
