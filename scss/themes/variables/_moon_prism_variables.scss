@@ -1,7 +1,5 @@
 @use 'sass:color';
 
-// Base colors, used for pretty much everything.
-// Moon Prism theme - ethereal lunar colors with celestial accents
 $gray-base: #0d0e1a;
 $white: $gray-base;
 $gray-100: color.scale($gray-base, $lightness: 10%);
@@ -15,12 +13,10 @@ $gray-800: color.scale($gray-base, $lightness: 80%);
 $gray-900: color.scale($gray-base, $lightness: 90%);
 $black: #f8f9ff;
 
-// Bootstrap 5 contrast colors
 $light-color: $black;
 $dark-color: $gray-base;
 $component-active-color: $dark-color; // Use dark color for light primary
 
-// Moon Prism celestial color palette
 $moon-prism-silver: #c8d5e8;
 $moon-prism-blue: #6b8cff;
 $moon-prism-purple: #a685ff;
@@ -32,7 +28,6 @@ $moon-prism-red: #ff8585;
 $moon-prism-magenta: #d485ff;
 $moon-prism-orange: #ffb785;
 
-// Theme and brand colors
 $primary: #8ba4d9;
 $secondary: $gray-400;
 $success: $moon-prism-green;
@@ -43,39 +38,31 @@ $light: $gray-200;
 $text-muted: $gray-500;
 $text-dark: $gray-600;
 
-// Core page element colors
 $body-bg: $gray-100;
 $link-color: $gray-800;
 $link-hover-color: color.scale($link-color, $lightness: 15%);
 $dropdown-bg: $gray-200;
 $dropdown-divider-bg: $gray-300;
 
-// Modal Dialogs
 $modal-backdrop-bg: $white;
 $modal-content-bg: $gray-200;
 $modal-header-border-color: $gray-300;
 
-$component-active-color: $dark-color; // Ensure dark text on light primary elements
-// Reduce default padding slightly between columns in grids.
+$component-active-color: $dark-color;
 $grid-gutter-width: 20px;
 
-// Form Elements
 $input-bg: $gray-200;
 $input-color: $black;
 $custom-select-bg: $gray-200;
 $form-check-input-checked-bg-color: $primary;
 
-// List groups
 $list-group-bg: $gray-200;
 
-// Pagination
 $pagination-active-color: $link-color;
 
-// F-List specific color helpers to help make monochromatic themes easier to deal with.
 $text-background-color: $gray-200;
 $text-background-color-disabled: $gray-100;
 
-// F-List Rising
 $scorePerfectMatchBg: rgb(0, 173, 173);
 $scorePerfectMatchFg: rgb(29, 154, 154);
 $scoreMatchBg: rgb(0, 142, 0);
