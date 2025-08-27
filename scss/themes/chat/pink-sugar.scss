@@ -6,7 +6,6 @@
 @import '../../flist_derived';
 @import '../variables/light_derived';
 
-// Apply variables to theme.
 @import '../chat';
 
 body,
@@ -68,7 +67,6 @@ body,
   background: $body-bg !important;
 }
 
-// Custom muted warning/danger colors for sugar theme
 $warning-bg-subtle-custom: mix($warning, $white, 45%);
 $danger-bg-subtle-custom: mix($danger, $white, 35%);
 
@@ -125,7 +123,6 @@ $genders: (
   }
 }
 
-// Message highlight colors for better contrast
 .message-highlight {
   .blueText,
   .blueNameText,
@@ -168,7 +165,6 @@ $genders: (
   }
 }
 
-// Warning message colors - maintain readability on light backgrounds
 .message-warn {
   .pinkText,
   .pinkNameText,
