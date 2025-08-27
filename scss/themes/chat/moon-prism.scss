@@ -19,7 +19,6 @@ $pink-color: $moon-prism-pink;
 $gray-color: $moon-prism-silver;
 $orange-color: $moon-prism-orange;
 
-// Apply variables to theme.
 @import '../chat';
 
 body,
@@ -92,7 +91,6 @@ $genders: (
   }
 }
 
-//Message type overrides (for bad gender/ bbcode color contrasts)
 
 .message-highlight {
   .blackText,
