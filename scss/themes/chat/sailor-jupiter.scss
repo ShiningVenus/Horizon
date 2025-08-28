@@ -1,0 +1,229 @@
+@use 'sass:color';
+@import '../../functions';
+@import '~bootstrap/scss/functions';
+@import '../variables/sailor_jupiter_variables';
+@import '~bootstrap/scss/variables';
+@import '../../flist_derived';
+@import '../variables/default_derived';
+
+// Text color definitions - soft, accessible colors inspired by Sailor Jupiter
+$red-color: $jupiter-coral;
+$green-color: $jupiter-forest;
+$blue-color: $jupiter-jade;
+$yellow-color: $jupiter-amber;
+$purple-color: $jupiter-lavender;
+$cyan-color: $jupiter-mint;
+$white-color: $black;
+$black-color: $jupiter-pine;
+$brown-color: $jupiter-olive;
+$pink-color: $jupiter-rose;
+$gray-color: $jupiter-spring;
+$orange-color: $jupiter-peach;
+
+@import '../chat';
+
+// Background styling - gentle forest-inspired gradients
+body,
+.modal-body {
+  background: #0f1a0e;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 26, 14, 1) 0%,
+    rgba(10, 18, 10, 1) 40%,
+    rgba(18, 28, 16, 1) 75%,
+    rgba(12, 20, 12, 1) 100%
+  );
+}
+
+.sidebar {
+  background-color: rgba($body-bg, 0.4);
+}
+
+.message-own:not(.message-warn) {
+  background-color: rgba($gray-200, 0.65);
+}
+
+// Scrollbar styling - soft and natural
+* {
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px rgba($jupiter-forest, 0.2);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.3);
+    background-color: color.scale($jupiter-forest, $lightness: -20%);
+    &:hover {
+      background-color: $jupiter-forest;
+    }
+
+    &:active {
+      background-color: color.scale($jupiter-forest, $lightness: 15%);
+    }
+  }
+}
+
+// Gender color mappings - accessible and theme-appropriate
+$genders: (
+  'shemale': $jupiter-lavender,
+  'herm': $jupiter-rose,
+  'none': $black-color,
+  'female': $jupiter-rose,
+  'male': $jupiter-jade,
+  'male-herm': $jupiter-mint,
+  'transgender': $jupiter-peach,
+  'cunt-boy': $jupiter-sage
+);
+
+.list-group.conversation-nav
+  .list-group-item-action.item-private.active
+  .online-status {
+  color: color-contrast($primary);
+}
+
+@each $gender, $color in $genders {
+  .gender-#{$gender} {
+    color: $color;
+  }
+
+  .message-event .gender-#{$gender} {
+    color: color.scale($color, $lightness: 8%);
+  }
+}
+
+// Message highlight colors - enhanced visibility while maintaining eye comfort
+.message-highlight {
+  .blackText,
+  .blackNameText,
+  .gender-none {
+    color: color.scale($jupiter-pine, $lightness: 25%);
+  }
+  .redText,
+  .redNameText {
+    color: color.scale($jupiter-coral, $lightness: 15%);
+  }
+  .gender-cunt-boy,
+  .greenText,
+  .greenNameText {
+    color: color.scale($jupiter-forest, $lightness: 15%);
+  }
+  .gender-female,
+  .pinkText,
+  .pinkNameText {
+    color: color.scale($jupiter-rose, $lightness: 15%);
+  }
+  .gender-male,
+  .blueText,
+  .blueNameText {
+    color: color.scale($jupiter-jade, $lightness: 15%);
+  }
+  .grayText,
+  .grayNametext {
+    color: color.scale($jupiter-spring, $lightness: 10%);
+  }
+  .yellowText,
+  .yellowNameText {
+    color: color.scale($jupiter-amber, $lightness: 15%);
+  }
+  .gender-transgender,
+  .orangeText,
+  .orangeNameText {
+    color: color.scale($jupiter-peach, $lightness: 15%);
+  }
+  .gender-male-herm,
+  .cyanText,
+  .cyanNameText {
+    color: color.scale($jupiter-mint, $lightness: 15%);
+  }
+  .purpleText,
+  .purpleNameText,
+  .gender-shemale {
+    color: color.scale($jupiter-lavender, $lightness: 15%);
+  }
+  .brownText,
+  .brownNameText {
+    color: color.scale($jupiter-olive, $lightness: 15%);
+  }
+}
+
+// Warning message colors - maintaining readability with good contrast
+.message-warn {
+  .pinkText,
+  .pinkNameText,
+  .gender-female {
+    color: color.scale($jupiter-rose, $lightness: -25%);
+  }
+  .whiteText,
+  .whiteNameText {
+    color: $white;
+  }
+  .brownText,
+  .brownNameText {
+    color: color.scale($jupiter-olive, $lightness: -35%);
+  }
+  .blueText,
+  .blueNameText,
+  .gender-male {
+    color: color.scale($jupiter-jade, $lightness: -25%);
+  }
+  .yellowText,
+  .yellowNameText {
+    color: color.scale($jupiter-amber, $lightness: -25%);
+  }
+  .greenText,
+  .greenNameText,
+  .gender-cunt-boy {
+    color: color.scale($jupiter-forest, $lightness: -25%);
+  }
+  .redText,
+  .redNameText,
+  .gender-herm {
+    color: color.scale($jupiter-coral, $lightness: -25%);
+  }
+  .orangeText,
+  .orangeNameText,
+  .brownNameText,
+  .brownText,
+  .gender-transgender {
+    color: color.scale($jupiter-peach, $lightness: -25%);
+  }
+  .purpleText,
+  .purpleNameText,
+  .gender-shemale {
+    color: color.scale($jupiter-lavender, $lightness: -25%);
+  }
+  .cyanText,
+  .cyanNameText,
+  .gender-male-herm {
+    color: color.scale($jupiter-mint, $lightness: -25%);
+  }
+  .grayText,
+  .grayNametext {
+    color: color.scale($jupiter-spring, $lightness: -20%);
+  }
+  .blackText,
+  .blackNameText,
+  .gender-none {
+    color: color.scale($jupiter-pine, $lightness: 15%);
+  }
+}
+
+// Colorblind accessibility support
+.colorblindMode {
+  @import '../colorblind';
+  @import '../../rising';
+
+  @each $varName, $value in $risingVariables {
+    --#{$varName}: #{$value};
+  }
+}
+
+// Set dark color scheme for system integration
+:root {
+  color-scheme: dark;
+}

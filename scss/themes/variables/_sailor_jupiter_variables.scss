@@ -1,0 +1,142 @@
+@use 'sass:color';
+
+// Base colors - soft, eye-friendly dark theme inspired by Sailor Jupiter
+$gray-base: #0f1a0e; // Deep forest green-black
+$white: $gray-base;
+$gray-100: color.scale($gray-base, $lightness: 8%);
+$gray-200: color.scale($gray-base, $lightness: 16%, $saturation: 3%);
+$gray-300: color.scale($gray-base, $lightness: 24%, $saturation: 5%);
+$gray-400: color.scale($gray-base, $lightness: 32%, $saturation: 7%);
+$gray-500: color.scale($gray-base, $lightness: 40%, $saturation: 10%);
+$gray-600: color.scale($gray-base, $lightness: 50%, $saturation: 12%);
+$gray-700: color.scale($gray-base, $lightness: 62%, $saturation: 15%);
+$gray-800: color.scale($gray-base, $lightness: 75%, $saturation: 8%);
+$gray-900: color.scale($gray-base, $lightness: 88%, $saturation: 5%);
+$black: #f0f8f0; // Soft nature white with hint of green
+
+$light-color: $black;
+$dark-color: $gray-base;
+$component-active-color: $dark-color;
+
+// Sailor Jupiter color palette - soft, earthy, eye-friendly
+$jupiter-forest: #6b9e6b; // Soft forest green
+$jupiter-sage: #8bb08b; // Gentle sage
+$jupiter-moss: #7aa57a; // Muted moss green
+$jupiter-mint: #9bc49b; // Soft mint
+$jupiter-pine: #5d8a5d; // Gentle pine
+$jupiter-jade: #7fb57f; // Muted jade
+$jupiter-olive: #a3b373; // Soft olive
+$jupiter-fern: #85a885; // Fern green
+$jupiter-spring: #b8d4b8; // Spring green
+
+// Support colors for text variety - all muted and accessible
+$jupiter-rose: #d4a3b8; // Soft rose for contrast
+$jupiter-gold: #d4c49a; // Muted gold
+$jupiter-lavender: #b8a8d4; // Soft lavender
+$jupiter-peach: #e0c4a8; // Gentle peach
+$jupiter-coral: #d9a596; // Muted coral
+$jupiter-amber: #d9c285; // Warm amber
+
+// Theme and brand colors - ensuring good contrast
+$primary: $jupiter-forest;
+$secondary: $gray-400;
+$success: $jupiter-sage;
+$info: color.scale($jupiter-jade, $lightness: -20%);
+$warning: $jupiter-amber;
+$danger: $jupiter-coral;
+$light: $gray-200;
+$text-muted: $gray-500;
+$text-dark: $gray-600;
+
+// Core page element colors
+$body-bg: $gray-100;
+$link-color: $gray-800;
+$link-hover-color: color.scale($link-color, $lightness: 10%);
+$dropdown-bg: $gray-200;
+$dropdown-divider-bg: $gray-300;
+
+// Modal Dialogs
+$modal-backdrop-bg: $white;
+$modal-content-bg: $gray-200;
+$modal-header-border-color: $gray-300;
+
+$component-active-color: $dark-color;
+$grid-gutter-width: 20px;
+
+// Form Elements
+$input-bg: $gray-200;
+$input-color: $black;
+$custom-select-bg: $gray-200;
+$form-check-input-checked-bg-color: $primary;
+
+// List groups
+$list-group-bg: $gray-200;
+
+// Pagination
+$pagination-active-color: $link-color;
+
+// F-List specific color helpers
+$text-background-color: $gray-200;
+$text-background-color-disabled: $gray-100;
+
+// F-List Rising - using accessible contrast colors
+$scorePerfectMatchBg: #5a9a5a; // Muted green
+$scorePerfectMatchFg: #7aba7a; // Lighter green
+$scoreMatchBg: #4a8a4a; // Darker muted green
+$scoreMatchFg: #6aaa6a; // Lighter muted green
+$scoreWeakMatchBg: #3a7a3a; // Even darker muted green
+$scoreWeakMatchFg: #5a9a5a; // Medium muted green
+$scoreWeakMismatchBg: #b8a570; // Muted gold
+$scoreWeakMismatchFg: #c9b885; // Lighter muted gold
+$scoreMismatchBg: #b57a7a; // Muted red
+$scoreMismatchFg: #c99595; // Lighter muted red
+$scoreTitleColor: $black;
+$scoreMinimizeButtonFg: rgba($black, 0.7);
+$scoreMinimizeButtonBg: rgba($white, 0.2);
+$scoreReportBg: rgba(0, 0, 0, 0.2);
+
+// Faded variants for subtlety
+$scoreFadedPerfectMatchBg: color.scale($scorePerfectMatchBg, $alpha: -60%);
+$scoreFadedPerfectMatchFg: color.scale($scorePerfectMatchFg, $alpha: -60%);
+$scoreFadedMatchBg: color.scale($scoreMatchBg, $alpha: -60%);
+$scoreFadedMatchFg: color.scale($scoreMatchFg, $alpha: -60%);
+$scoreFadedWeakMatchBg: color.scale($scoreWeakMatchBg, $alpha: -60%);
+$scoreFadedWeakMatchFg: color.scale($scoreWeakMatchFg, $alpha: -60%);
+$scoreFadedWeakMismatchBg: color.scale($scoreWeakMismatchBg, $alpha: -60%);
+$scoreFadedWeakMismatchFg: color.scale($scoreWeakMismatchFg, $alpha: -60%);
+$scoreFadedMismatchBg: color.scale($scoreMismatchBg, $alpha: -60%);
+$scoreFadedMismatchFg: color.scale($scoreMismatchFg, $alpha: -60%);
+
+// Standout colors for highlighting - ensuring accessibility
+$scoreStandoutMatchBorderColor: #6aaa6a;
+$scoreStandoutMatchBgColor: rgba(106, 170, 106, 0.35);
+$scoreStandoutWeakMatchBorderColor: #5a9a5a;
+$scoreStandoutWeakMatchBgColor: rgba(90, 154, 90, 0.3);
+$scoreStandoutNeutralBorderColor: $jupiter-forest;
+$scoreStandoutWeakMismatchBorderColor: #c9b885;
+$scoreStandoutWeakMismatchBgColor: rgba(201, 184, 133, 0.2);
+$scoreStandoutMismatchBorderColor: #b57a7a;
+
+// Character page specific colors
+$characterImageWrapperBg: rgba(15, 26, 14, 0.3);
+$characterGuestbookPostBg: rgba(15, 26, 14, 0.25);
+$characterGuestbookPostBorderColor: rgba(107, 158, 107, 0.1);
+$characterGuestbookReplyBg: rgba(15, 26, 14, 0.15);
+$characterGuestbookTimestampFg: rgba(240, 248, 240, 0.4);
+$characterKinkCustomColor: $jupiter-amber;
+$characterKinkCustomBorderColor: rgba(107, 158, 107, 0.1);
+$characterKinkStockColor: #e8f4e8;
+$characterKinkStockHighlightedColor: $black;
+$characterInfotagColor: rgba(240, 248, 240, 0.7);
+
+// Message and time styling
+$messageTimeBgColor: $gray-300;
+$messageTimeFgColor: $gray-800;
+
+$headerBackgroundMaskColor: $gray-200;
+
+// Link styling
+$linkForcedColor: $jupiter-spring;
+$tabSecondaryFgColor: rgba(240, 248, 240, 0.5);
+
+@import 'invert';
