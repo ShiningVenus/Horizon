@@ -246,6 +246,8 @@ The (currently work in progress and non-existing at this current moment) wiki ha
 
 Please read [CONTRIBUTING.md](./CONTRIBUTING.md)
 
+For AI-assisted development and detailed codebase guidance, see [copilot.md](./copilot.md)
+
 # Credits
 
 <a href="https://github.com/Fchat-Horizon/Horizon/graphs/contributors">
