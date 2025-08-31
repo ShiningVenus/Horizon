@@ -107,9 +107,10 @@
                   <div class="form-check">
                     <input
                       type="checkbox"
-                      disabled
                       id="themeSystemSync"
                       class="form-check-input"
+                      v-model="settings.themeSystemSync"
+                      @change="onSystemSyncChange"
                     />
                     <label class="form-check-label" for="themeSystemSync">
                       {{ l('settings.theme.sync') }}
@@ -117,30 +118,93 @@
                   </div>
                 </div>
 
+                <div class="mb-3" v-show="settings.themeSystemSync">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label class="control-label" for="themeLight">
+                        {{ l('settings.theme.sync.light') }}
+                        <filterable-select
+                          v-model="settings.themeLight"
+                          :options="availableThemes"
+                          :title="l('settings.theme.sync.light')"
+                          @input="onThemeLightChange"
+                        >
+                          <template slot-scope="s">
+                            {{ capitalizeThemeName(s.option) }}
+                          </template>
+                        </filterable-select>
+                      </label>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="control-label" for="themeDark">
+                        {{ l('settings.theme.sync.dark') }}
+                        <filterable-select
+                          v-model="settings.themeDark"
+                          :options="availableThemes"
+                          :title="l('settings.theme.sync.dark')"
+                          @input="onThemeDarkChange"
+                        >
+                          <template slot-scope="s">
+                            {{ capitalizeThemeName(s.option) }}
+                          </template>
+                        </filterable-select>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="mb-3">
-                  <label class="control-label" for="theme" style="width: 20ch">
-                    {{ l('settings.theme') }}
-                    <!--<select
-                      id="theme"
-                      class="form-select"
-                      v-model="settings.theme"
-                      style="flex: 1; margin-right: 10px"
+                  <div class="d-flex align-items-center mb-2">
+                    <label
+                      class="control-label"
+                      for="theme"
+                      style="width: 20ch; margin-right: 15px"
                     >
-                      <option v-for="theme in availableThemes" :value="theme">
-                        {{ theme }}
-                      </option>
-                    </select> -->
-                    <filterable-select
-                      v-model="settings.theme"
-                      :options="availableThemes"
-                      :placeholder="l('filter')"
-                      :title="l('settings.theme')"
+                      {{ l('settings.theme') }}
+                    </label>
+                    <div
+                      class="btn-group"
+                      role="group"
+                      aria-label="Quick theme toggle"
                     >
-                      <template slot-scope="s">
-                        {{ capitalizeThemeName(s.option) }}
-                      </template>
-                    </filterable-select>
-                  </label>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        @click="toggleToLightTheme"
+                        :disabled="settings.themeSystemSync"
+                        :class="{ active: isLightTheme }"
+                      >
+                        <i class="fa fa-sun-o"></i> Light
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                        @click="toggleToDarkTheme"
+                        :disabled="settings.themeSystemSync"
+                        :class="{ active: isDarkTheme }"
+                      >
+                        <i class="fa fa-moon-o"></i> Dark
+                      </button>
+                    </div>
+                  </div>
+                  <filterable-select
+                    v-model="settings.theme"
+                    :options="availableThemes"
+                    :placeholder="l('filter')"
+                    :title="l('settings.theme')"
+                    :disabled="settings.themeSystemSync"
+                    style="flex: 1"
+                  >
+                    <template slot-scope="s">
+                      {{ capitalizeThemeName(s.option) }}
+                    </template>
+                  </filterable-select>
+                  <div
+                    v-if="settings.themeSystemSync"
+                    class="form-text text-muted mt-1"
+                  >
+                    {{ l('settings.theme.syncEnabled') }}
+                  </div>
                 </div>
                 <h5>
                   {{ l('settings.theme.textColors') }}
@@ -636,7 +700,7 @@
   import { GeneralSettings } from './common';
   import fs from 'fs';
   import path from 'path';
-  import { ipcRenderer } from 'electron';
+  import { ipcRenderer, nativeTheme } from 'electron';
   import log from 'electron-log';
   import { Dialog } from '../helpers/dialog';
   import Tabs from '../components/tabs';
@@ -687,6 +751,68 @@
       }
     }
 
+    // Define light and dark theme sets for quick toggle functionality
+    private lightThemes = ['default', 'light', 'classic'];
+    private darkThemes = ['dark', 'dark dimmed', 'dracula'];
+
+    get isLightTheme(): boolean {
+      return this.lightThemes.includes(this.settings.theme);
+    }
+
+    get isDarkTheme(): boolean {
+      return this.darkThemes.includes(this.settings.theme);
+    }
+
+    // System theme sync methods
+    onSystemSyncChange(): void {
+      if (this.settings.themeSystemSync) {
+        this.applySystemTheme();
+        // Listen for system theme changes
+        nativeTheme.on('updated', this.onSystemThemeChanged);
+      } else {
+        // Stop listening when disabled
+        nativeTheme.off('updated', this.onSystemThemeChanged);
+      }
+    }
+
+    onSystemThemeChanged = (): void => {
+      if (this.settings.themeSystemSync) {
+        this.applySystemTheme();
+      }
+    };
+
+    applySystemTheme(): void {
+      const systemShouldUseDarkColors = nativeTheme.shouldUseDarkColors;
+      this.settings.theme = systemShouldUseDarkColors
+        ? this.settings.themeDark
+        : this.settings.themeLight;
+    }
+
+    onThemeLightChange(): void {
+      if (this.settings.themeSystemSync && !nativeTheme.shouldUseDarkColors) {
+        this.settings.theme = this.settings.themeLight;
+      }
+    }
+
+    onThemeDarkChange(): void {
+      if (this.settings.themeSystemSync && nativeTheme.shouldUseDarkColors) {
+        this.settings.theme = this.settings.themeDark;
+      }
+    }
+
+    // Quick toggle methods
+    toggleToLightTheme(): void {
+      if (!this.settings.themeSystemSync) {
+        this.settings.theme = this.settings.themeLight;
+      }
+    }
+
+    toggleToDarkTheme(): void {
+      if (!this.settings.themeSystemSync) {
+        this.settings.theme = this.settings.themeDark;
+      }
+    }
+
     @Hook('mounted')
     async mounted(): Promise<void> {
       updateSupportedLanguages(
@@ -719,11 +845,24 @@
         remote.session.defaultSession.availableSpellCheckerLanguages
       );
       this.sortedLangs = _.sortBy(availableLanguages, 'name');
+
+      // Initialize system theme sync if enabled
+      if (this.settings.themeSystemSync) {
+        this.applySystemTheme();
+        nativeTheme.on('updated', this.onSystemThemeChanged);
+      }
+
       window.addEventListener('keyup', e => {
         if (e.key === 'Escape') {
           this.close();
         }
       });
+    }
+
+    @Hook('beforeDestroy')
+    beforeDestroy(): void {
+      // Clean up system theme change listener
+      nativeTheme.off('updated', this.onSystemThemeChanged);
     }
 
     minimize(): void {
