@@ -31,6 +31,9 @@ export class GeneralSettings {
   logDirectory = path.join(electron.app.getPath('userData'), 'data');
   spellcheckLang: string[] | string | undefined = [getDefaultLanguage()];
   theme = 'default';
+  themeSystemSync = false;
+  themeLight = 'default';
+  themeDark = 'dark';
   version = electron.app.getVersion();
   beta = false;
   updateCheck = true;

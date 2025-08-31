@@ -232,9 +232,11 @@ Are you sure?`,
   'settings.soundTheme': 'Sound Theme',
   'settings.theme': 'Theme',
   'settings.theme.textColors': 'Text and colors',
-  'settings.theme.sync': 'Sync with system theme (coming soon)',
+  'settings.theme.sync': 'Sync with system theme',
   'settings.theme.sync.light': 'Light mode theme',
   'settings.theme.sync.dark': 'Dark mode theme',
+  'settings.theme.syncEnabled':
+    'Theme will automatically follow your system preference when sync is enabled.',
   'settings.theme.vanillaBbcode': 'Use vanilla BBCode colors',
   'settings.theme.vanillaBbcode.legibilityNote':
     'These colors might not be legible on all themes.',
